@@ -1,0 +1,19 @@
+**VISUALIZING**
+
+Would you, could you in a house
+
+
+Would you, [could]
+           could [you]
+                 you [in]
+                     in [a]
+                        a [house]
+
+
+{
+("would", "you"): ["could"], 
+("you", "could"): ["you"],
+("could", "you"): ["in"],
+("you", "in"): ["a"],
+("in", "a"): ["house"],
+}
