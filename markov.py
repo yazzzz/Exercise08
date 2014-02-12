@@ -10,11 +10,19 @@ def make_chains(text):
     print text_list
     text_dict = {}
 
+
     for i in range(2,len(text_list)):
-        if not text_dict.get(i):
-            text_dict[text_list[i-2], text_list[i-1]] = [text_list[i]]
-        
+        bgram1 = text_list[i-2]
+        bgram2 = text_list[i-1]
+        value = text_list[i]
+        if not text_dict.get((bgram1, bgram2)):
+            text_dict[bgram1, bgram2] = [value]
+        else:
+            text_dict[bgram1, bgram2] += [value]
     pprint.pprint(text_dict)
+
+
+
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
