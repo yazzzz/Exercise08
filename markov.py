@@ -2,14 +2,14 @@
 
 import sys
 import pprint
+import random
 
 def make_chains(text):
     """Takes an input text as a string and returns a dictionary of
     markov chains."""
     text_list = text.split()
-    print text_list
+    #print text_list
     text_dict = {}
-
 
     for i in range(2,len(text_list)):
         bgram1 = text_list[i-2]
@@ -19,15 +19,22 @@ def make_chains(text):
             text_dict[bgram1, bgram2] = [value]
         else:
             text_dict[bgram1, bgram2] += [value]
-    pprint.pprint(text_dict)
-
+    #pprint.pprint(text_dict)
+    return text_dict
 
 
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
-    pass
+    for key, value in chains.iteritems():
+        #print "%r : %r" % (key, value)
+        if len(value) == 1:
+            print key, value
+        else:
+            print key, value[random.randint(0,len(value)-1)]
+
+    
 
 def main():
     #args = sys.argv[1]
