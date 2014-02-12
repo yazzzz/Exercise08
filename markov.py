@@ -22,14 +22,20 @@ def make_chains(text):
     #pprint.pprint(text_dict)
     return text_dict
 
+def pick_first_random_key(chains):
+    random_key = (random.sample(chains.keys(), 1))
+    while not random_key[0][0].istitle():
+        random_key = (random.sample(chains.keys(), 1))
+    return random_key        
 
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
     #get random key from dictionary and add it to list
-    random_key = (random.sample(chains.keys(), 1))
-    sentence = [random_key[0][0].title(),random_key[0][1]]
+    random_key = pick_first_random_key(chains)
+    sentence = [random_key[0][0],random_key[0][1]]
+
     while chains.get(random_key[0]): #while our key exists in the dict
         pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
         #make new bigram with y value from random_key and pick_value
