@@ -29,64 +29,24 @@ def make_text(chains):
     based off an original text."""
     #get random key from dictionary and add it to list
     random_key = (random.sample(chains.keys(), 1))
-    sentence = [random_key[0][0],random_key[0][1]]
+    sentence = [random_key[0][0].title(),random_key[0][1]]
     while chains.get(random_key[0]): #while our key exists in the dict
         pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
         #make new bigram with y value from random_key and pick_value
-        #print pick_value
         sentence.append(pick_value)
         random_key = [(random_key[0][1], pick_value)]
-        #print random_key
-        #print random_key[0]
-        
-        #new_bigram = y, pick_value
-        #append new bigram to list
-        #set new bigram to random_key so we can loop?    
+ 
 
-    print "\n" +  " ".join(sentence)
+    result =  "\n" +  " ".join(sentence)
+    return result
    
-
-    #write a while loop that says while i have valid key in dictionary, do this
-
-    #while BLAH in chains.get():
-    #use (x, y) key to pick random value. (y, value) becomes next key to print.    
-
-
-
-
-    # for key, value in chains.iteritems():
-    #     #print "%r : %r" % (key, value)
-    #     #If there is only one value to choose from, choose that value.
-    #     if len(value) == 1:
-    #         # print key, value
-    #         nextvalue = value
-    #         #print key, nextvalue
-    #     else:
-    #     #If there are multiple values, pick a random value.    
-    #         nextvalue = value[random.randint(0,len(value)-1)]
-    #         #print key, nextvalue
-
-    #     # To chain off this value, check dict to see if it's a key.
-
-    #    # if nextvalue in [x for (x,y) in chains.keys()]:
-    #     for (x, y) in chains.keys():
-    #         if nextvalue == x:
-    #             #print x, y
-    #             markov_sentence = markov_sentence + " " + x + " " + y
-    #             break
-    # print markov_sentence    
-            
-
-
-    
 
 def main():
     #args = sys.argv[1]
-    script, filename  = sys.argv   
+    script, filename  = sys.argv 
     # Change this to read input_text from a file
     f = open(filename)
     input_text = f.read()
-    #print input_text
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
