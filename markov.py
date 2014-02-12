@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-
+import pprint
 
 def make_chains(text):
     """Takes an input text as a string and returns a dictionary of
@@ -9,13 +9,12 @@ def make_chains(text):
     text_list = text.split()
     print text_list
     text_dict = {}
-    for i in range(1,len(text_list)):
+
+    for i in range(2,len(text_list)):
         if not text_dict.get(i):
-            text_dict[text_list[i-1], text_list[i]] = text_list[i+1]
-        #print text_list[i-1], text_list[i]
-        print text_dict
-
-
+            text_dict[text_list[i-2], text_list[i-1]] = [text_list[i]]
+        
+    pprint.pprint(text_dict)
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
