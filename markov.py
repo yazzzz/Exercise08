@@ -19,7 +19,7 @@ def make_chains(text):
             text_dict[bgram1, bgram2] = [value]
         else:
             text_dict[bgram1, bgram2] += [value]
-    pprint.pprint(text_dict)
+    #pprint.pprint(text_dict)
     return text_dict
 
 
@@ -27,30 +27,53 @@ def make_chains(text):
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
-    markov_sentence = ""
-    for key, value in chains.iteritems():
-        #print "%r : %r" % (key, value)
-        #If there is only one value to choose from, choose that value.
-        if len(value) == 1:
-            # print key, value
-            nextvalue = value
-            #print key, nextvalue
-        else:
-        #If there are multiple values, pick a random value.    
-            nextvalue = value[random.randint(0,len(value)-1)]
-            #print key, nextvalue
+    sentence = []
+    #get random key from dictionary and add it to list
+    random_key = (random.sample(chains.keys(), 1))
+    sentence.append(random_key)
+    #print random_key[0][0]
+    while chains.get(random_key[0]): #while our key exists in the dict
+        pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
+        #make new bigram with y value from random_key and pick_value
+        print random_key[0]
+        print random_key[0][1] + " " + pick_value
+        break
+        #new_bigram = y, pick_value
+        #append new bigram to list
+        #set new bigram to random_key so we can loop?    
 
-        # To chain off this value, check dict to see if it's a key.
+        
+   
 
-        if nextvalue in [x for (x,y) in chains.keys()]:
-            for (x, y) in chains.keys():
-                if nextvalue == x:
-                    #print x, y
-                    markov_sentence = markov_sentence + " " + x + " " + y
-                    break
-    print markov_sentence
-        #if this is true, print (x,y) bigram and choose next bigram from values.
-            #print chains.keys()     
+    #write a while loop that says while i have valid key in dictionary, do this
+
+    #while BLAH in chains.get():
+    #use (x, y) key to pick random value. (y, value) becomes next key to print.    
+
+
+
+
+    # for key, value in chains.iteritems():
+    #     #print "%r : %r" % (key, value)
+    #     #If there is only one value to choose from, choose that value.
+    #     if len(value) == 1:
+    #         # print key, value
+    #         nextvalue = value
+    #         #print key, nextvalue
+    #     else:
+    #     #If there are multiple values, pick a random value.    
+    #         nextvalue = value[random.randint(0,len(value)-1)]
+    #         #print key, nextvalue
+
+    #     # To chain off this value, check dict to see if it's a key.
+
+    #    # if nextvalue in [x for (x,y) in chains.keys()]:
+    #     for (x, y) in chains.keys():
+    #         if nextvalue == x:
+    #             #print x, y
+    #             markov_sentence = markov_sentence + " " + x + " " + y
+    #             break
+    # print markov_sentence    
             
 
 
