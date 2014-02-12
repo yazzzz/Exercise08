@@ -30,9 +30,18 @@ def make_text(chains):
     for key, value in chains.iteritems():
         #print "%r : %r" % (key, value)
         if len(value) == 1:
-            print key, value
+            # print key, value
+            nextvalue = value
+            print key, nextvalue
         else:
-            print key, value[random.randint(0,len(value)-1)]
+            nextvalue = value[random.randint(0,len(value)-1)]
+            print key, nextvalue
+
+
+            #if nextvalue in [x for (x,y) in chains.keys()]:
+                
+        
+
 
     
 
