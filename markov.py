@@ -27,22 +27,23 @@ def make_chains(text):
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
-    sentence = []
     #get random key from dictionary and add it to list
     random_key = (random.sample(chains.keys(), 1))
-    sentence.append(random_key)
-    #print random_key[0][0]
+    sentence = [random_key[0][0],random_key[0][1]]
     while chains.get(random_key[0]): #while our key exists in the dict
         pick_value = chains[random_key[0]][random.randint(0, len(chains[random_key[0]])-1)]
         #make new bigram with y value from random_key and pick_value
-        print random_key[0]
-        print random_key[0][1] + " " + pick_value
-        break
+        #print pick_value
+        sentence.append(pick_value)
+        random_key = [(random_key[0][1], pick_value)]
+        #print random_key
+        #print random_key[0]
+        
         #new_bigram = y, pick_value
         #append new bigram to list
         #set new bigram to random_key so we can loop?    
 
-        
+    print "\n" +  " ".join(sentence)
    
 
     #write a while loop that says while i have valid key in dictionary, do this
