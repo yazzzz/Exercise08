@@ -41,9 +41,11 @@ def make_text(chains):
         #make new bigram with y value from random_key and pick_value
         sentence.append(pick_value)
         random_key = [(random_key[0][1], pick_value)]
- 
-
-    result =  "\n" +  " ".join(sentence)
+        if len(" ".join(sentence)) <= 140:
+            result =  "\n" +  " ".join(sentence)
+        else:
+            result =  "\n" +  "TOO LONG"
+            break      
     return result
    
 
